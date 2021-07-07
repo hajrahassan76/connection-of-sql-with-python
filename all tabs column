@@ -1,0 +1,21 @@
+import cx_Oracle
+
+try:
+    con = cx_Oracle.connect('scott/tiger@localhost:1521/orcl')
+
+except cx_Oracle.DatabaseError as er:
+    print('There is an error in the Oracle database:', er)
+
+else:
+    try:
+        cur = con.cursor()
+
+        # fetchall() is used to fetch all records from result set
+        cur.execute('select column_name from ALL_TAB_COLUMNS where table_name=\'EMP\'')
+        rows = cur.fetchall()
+        print(rows)
+
+        # fetchmany(int) is used to fetch limited number of records from result set based on integer argument passed in it
+        cur.execute('select * from emp')
+        rows = cur.fetchmany(3)
+        print(rows)
