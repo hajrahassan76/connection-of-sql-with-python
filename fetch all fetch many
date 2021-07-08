@@ -1,0 +1,25 @@
+import mysql.connector as sql
+myDb = sql.connect(host='localhost',database='world',user='root',password='admin')
+if myDb.is_connected():
+    print("succesfully connected")
+    mycursor= myDb.cursor(buffered=True)
+    worldCursor = myDb.cursor()
+    worldCursor.execute("select * from country")
+    Data = worldCursor.fetchone()
+    V_count = worldCursor.rowcount
+    print("Total Rows retrieved: ", V_count)
+    print(Data)
+    Data=worldCursor.fetchmany(4)
+    V_count=worldCursor.rowcount
+    print("total rows retrived",V_count)
+    for row in Data:
+        print (row)
+        Data = worldCursor.fetchall()
+
+        V_count = worldCursor.rowcount
+
+        print("Total Rows retrieved: ", V_count)
+
+        for row in Data:
+
+            print(row)
