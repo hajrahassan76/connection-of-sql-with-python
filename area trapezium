@@ -1,0 +1,13 @@
+def area_trapezium(a,b,h):
+    area=0.5*(a+b)*h
+    print("area of trapezium(area)")
+def series_print(start,end):
+        for i in range(start,end):
+            print(i)
+def main():
+            area_trapezium(10,15,20)
+            start=int(input('enter start no'))
+            end=int(input('enter end no'))
+            series_print(start,end)
+if __name__=="__main__":
+            main()
